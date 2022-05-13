@@ -1,5 +1,4 @@
-
-* {
+*{
     margin: 0;
     border: 0;
     box-sizing: border-box;
@@ -10,9 +9,61 @@ body {
     font-family: 'Courier New', Courier, monospace;
 }
 
-#field_container {
-    width: 100%;
-    height: 100vh;
-    background-color: lightgray;
+header.hidden{
+    display: none;
 }
 
+.btn {
+    width: 120px;
+    margin: 10px 10px 30px;
+    padding: 10px;
+    background-color: rgb(131, 131, 172);
+    border-radius: 8px;
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(159, 159, 204);
+    border: 2px solid black;
+    margin: 8px 10px 28px;
+
+    
+}
+
+#field_container {
+    width: 100vh;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: lightgray;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.base_slot {
+    /* min-width: 50px; */
+    /* min-height: 50px; */
+    background-color: yellow;
+    border: 1vh dashed black;
+    /* border-radius: 12px; */
+    margin: 2px;
+}
+
+.base_slot:hover {
+    background-color: rgb(255, 255, 126);
+    border: 1vh dashed rgb(136, 136, 136);
+}
+
+.easy_slot {
+    width: calc((100% / 10) - 4px);
+    height: calc((100vh / 10) - 4px);
+}
+
+.medium_slot {
+    width: calc((100% / 9) - 4px);
+    height: calc((100vh / 9) - 4px);
+}
+
+.hard_slot {
+    width: calc((100% / 7) - 4px);
+    height: calc((100vh / 7) - 4px);
+}
