@@ -7,6 +7,7 @@
 body {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    font-size: large;
 }
 
 header.hidden{
@@ -26,17 +27,19 @@ header.hidden{
     background-color: rgb(159, 159, 204);
     border: 2px solid black;
     margin: 8px 10px 28px;
-
-    
 }
 
 #field_container {
     width: 100vh;
     height: 100vh;
     margin: 0 auto;
-    background-color: lightgray;
+    background-color: rgb(131, 131, 172);
     display: flex;
     flex-wrap: wrap;
+    outline: 18px solid rgb(109, 109, 147);
+    outline-style: ridge;
+    border-radius: 3px;
+
 }
 
 .base_slot {
@@ -53,6 +56,11 @@ header.hidden{
     border: 1vh dashed rgb(136, 136, 136);
 }
 
+/* 
+.base_slot:hover::before { 
+    content: "\2622";
+  } */
+
 .easy_slot {
     width: calc((100% / 10) - 4px);
     height: calc((100vh / 10) - 4px);
@@ -66,4 +74,14 @@ header.hidden{
 .hard_slot {
     width: calc((100% / 7) - 4px);
     height: calc((100vh / 7) - 4px);
+}
+
+.checked {
+    background-color: lightblue;
+    border: 1.5vh groove;
+}
+
+.checked:hover {
+    background-color: rgb(203, 225, 233);
+    border: 0.5vh solid blue;
 }

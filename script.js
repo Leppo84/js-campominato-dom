@@ -1,3 +1,5 @@
+// creo il link al container
+
 const field = document.getElementById("field_container");
 
 // creo link ai tre bottoni, uno per difficoltà
@@ -45,32 +47,21 @@ function fieldGen(nSlot, slotClass) {
 
         field.append(slot)
 
+        slot.addEventListener("click",
+        function() {
+            this.classList.add("checked");
+        }
+        )
     }
 
 }
+
+// una funzione evita la sovrascrittura
 
 function clearField() {
-    var slot = field.lastElementChild;
-    while (slot) {
-        field.removeChild(slot);
-        slot = field.lastElementChild;
+    let oldSlot = field.lastElementChild;
+    while (oldSlot) {
+        field.removeChild(oldSlot);
+        oldSlot = field.lastElementChild;
     }
 }
-
-
-
-
-// function deleteChild() {
-//     var e = document.querySelector("ul");
-    
-//     //e.firstElementChild can be used.
-//     var child = e.lastElementChild; 
-//     while (child) {
-//         e.removeChild(child);
-//         child = e.lastElementChild;
-//     }
-// }
-// var btn = document.getElementById(
-// "btn").onclick = function() {
-//     deleteChild();
-// }
