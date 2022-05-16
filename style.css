@@ -64,16 +64,21 @@ header.hidden{
 .easy_slot {
     width: calc((100% / 10) - 4px);
     height: calc((100vh / 10) - 4px);
+    font-size: 4vh;
 }
 
 .medium_slot {
     width: calc((100% / 9) - 4px);
     height: calc((100vh / 9) - 4px);
+    font-size: 5vh;
+
 }
 
 .hard_slot {
     width: calc((100% / 7) - 4px);
     height: calc((100vh / 7) - 4px);
+    font-size: 7vh;
+
 }
 
 .checked {
@@ -86,21 +91,24 @@ header.hidden{
     border: 0.5vh solid blue;
 }
 
-.bombexplosion {
-    animation-name: explosion
+.bomb {
+}
+
+.bomb_reveal {
+    background-color: red;
+}
+
+.bombexplode {
+    animation-name: explode;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
 }
 
-@keyframes spin10 {
+@keyframes explode {
 0% {
     background-color: white;
 }
 50% {
     background-color: red; 
 }
-}
-
-.bomb {
-    background-color: red;
 }

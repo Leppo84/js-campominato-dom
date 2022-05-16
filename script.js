@@ -10,11 +10,6 @@ const mediumField = document.getElementById("medium");
 
 const hardField = document.getElementById("hard");
 
-let allSlot = [];
-let check = allSlot.length;
-
-let bombSlot = [];
-
 // let nSlot = 100 ;
 
 // console.log( Math.floor(Math.random() * nSlot + 1 ));
@@ -55,6 +50,10 @@ function fieldGen(nSlot, slotClass) {
 
     // debugger;
 
+    let allSlot = [];
+
+    let bombSlot = [];
+
     while ( allSlot.length < nSlot ) {
 
         let tagSlot = Math.floor(Math.random() * nSlot + 1 );
@@ -79,7 +78,7 @@ function fieldGen(nSlot, slotClass) {
                 bombSlot.push(tagSlot);
 
                 slot = document.createElement("div");
-                slot.className = "base_slot bomb" + slotClass;
+                slot.className = "base_slot" + slotClass;
 
         
                 field.append(slot);
@@ -87,7 +86,12 @@ function fieldGen(nSlot, slotClass) {
 
                 slot.addEventListener("click",
                     function() {
-                        this.classList.add("checked");
+
+                        // let reveal = document.querySelector(".bomb");
+                        
+                        // reveal.classList.add("bomb_reveal");
+
+                        this.classList.add("bombexplode");
                     }
                 )
                 
@@ -114,11 +118,9 @@ function fieldGen(nSlot, slotClass) {
         }
         
     }
-        
 
-
-
-
+    console.log(allSlot);
+    console.log(bombSlot);
 
 }
 
