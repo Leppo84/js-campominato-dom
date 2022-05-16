@@ -11,96 +11,118 @@ const mediumField = document.getElementById("medium");
 const hardField = document.getElementById("hard");
 
 let allSlot = [];
+let check = allSlot.length;
 
 let bombSlot = [];
+
+// let nSlot = 100 ;
+
+// console.log( Math.floor(Math.random() * nSlot + 1 ));
 
 // il listener applica la classe e il numero di celle del campo (opzionale, fa scomparire i bottoni e l'header)
 
 easyField.addEventListener("click", 
     function () {
 
-        let nSlot = 100
         field.innerHTML = "";
-        fieldGen(nSlot, " easy_slot");
+        fieldGen(100, " easy_slot");
+
+
     }
 )
 
 mediumField.addEventListener("click", 
     function () {
 
-        let nSlot = 81
         field.innerHTML = "";
-        fieldGen(nSlot, " medium_slot");
+        fieldGen(81, " medium_slot");
+
     }
 )
 
 hardField.addEventListener("click", 
     function () {
 
-        let nSlot = 49
         field.innerHTML = "";
-        fieldGen(nSlot, " hard_slot");
+        fieldGen(49, " hard_slot");
+
     }
 )
 
 // la funzione crea le cellette dentro il campo
 
 function fieldGen(nSlot, slotClass) {
-    for (let i = 0; i < nSlot; i++) {
-        while (allSlot.lenght < nSlot ) {
-            let tagSlot = Math.floor(Math.random) * ( nSlot + 1 )
 
-            const slot = document.createElement("div");
-            slot.className = "base_slot" + slotClass;
-    
-            field.append(slot);
+    // debugger;
 
-            slot.append(tagSlot);
+    while ( allSlot.length < nSlot ) {
 
+        let tagSlot = Math.floor(Math.random() * nSlot + 1 );
 
-            if (!allSlot.includes(tagSlot)) {
-                if (tagSlot <= 16 ) {
+        
+        console.log(tagSlot);
+        
+        // const slot = document.createElement("div");
+        // slot.className = "base_slot" + slotClass;
+        
+        // field.append(slot);
+        
+        // slot.append(tagSlot);
+        
+        
+        if (!allSlot.includes(tagSlot)) {
 
-                    allSlot.push(tagSlot);
+            if (tagSlot <= 16 ) {
 
-                    bombSlot.push(tagSlot);
-    
-                    const slot = document.createElement("div");
-                    slot.className = "base_slot bomb" + slotClass;
+                allSlot.push(tagSlot);
 
-            
-                    field.append(slot);
-                    slot.append(tagSlot);
-                    
-                }
-                else {
-                    allSlot.push(tagSlot);
-                    const slot = document.createElement("div");
-                    slot.className = "base_slot" + slotClass;
+                bombSlot.push(tagSlot);
 
-                    field.append(slot);
-                    slot.append(tagSlot);        
-                }
+                slot = document.createElement("div");
+                slot.className = "base_slot bomb" + slotClass;
 
+        
+                field.append(slot);
+                slot.append(tagSlot);
 
+                slot.addEventListener("click",
+                    function() {
+                        this.classList.add("checked");
+                    }
+                )
+                
             }
-            
-            slot.addEventListener("click",
-            function() {
-                this.classList.add("checked");
+            else {
+                allSlot.push(tagSlot);
+                slot = document.createElement("div");
+                slot.className = "base_slot" + slotClass;
+
+                field.append(slot);
+                slot.append(tagSlot);    
+
+                slot.addEventListener("click",
+                    function() {
+                        this.classList.add("checked");
+                    } 
+                ) 
             }
-            )
-            
-            
+
         }
+
+        else {
+
+        }
+        
+    }
         
 
 
 
 
-    }
 
 }
+
+// for (let i = 0; i < nSlot; i++) {}
 
 // !!aggiunta numeri e bombe!!
 
