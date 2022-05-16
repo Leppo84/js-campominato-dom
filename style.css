@@ -85,3 +85,22 @@ header.hidden{
     background-color: rgb(203, 225, 233);
     border: 0.5vh solid blue;
 }
+
+.bombexplosion {
+    animation-name: explosion
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes spin10 {
+0% {
+    background-color: white;
+}
+50% {
+    background-color: red; 
+}
+}
+
+.bomb {
+    background-color: red;
+}
