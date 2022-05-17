@@ -10,18 +10,13 @@ const mediumField = document.getElementById("medium");
 
 const hardField = document.getElementById("hard");
 
-// let nSlot = 100 ;
-
-// console.log( Math.floor(Math.random() * nSlot + 1 ));
-
 // il listener applica la classe e il numero di celle del campo (opzionale, fa scomparire i bottoni e l'header)
 
 easyField.addEventListener("click", 
     function () {
 
         field.innerHTML = "";
-        fieldGen(100, " easy_slot");
-
+        fieldGen(100, " easy_slot ");
 
     }
 )
@@ -30,7 +25,7 @@ mediumField.addEventListener("click",
     function () {
 
         field.innerHTML = "";
-        fieldGen(81, " medium_slot");
+        fieldGen(81, " medium_slot ");
 
     }
 )
@@ -39,7 +34,7 @@ hardField.addEventListener("click",
     function () {
 
         field.innerHTML = "";
-        fieldGen(49, " hard_slot");
+        fieldGen(49, " hard_slot ");
 
     }
 )
@@ -48,26 +43,17 @@ hardField.addEventListener("click",
 
 function fieldGen(nSlot, slotClass) {
 
-    // debugger;
-
     let allSlot = [];
 
     let bombSlot = [];
+    
+    let score = 0;
 
-    while ( allSlot.length < nSlot ) {
+    let play = 1;
+
+    while ( allSlot.length < nSlot && play == 1) {
 
         let tagSlot = Math.floor(Math.random() * nSlot + 1 );
-
-        
-        console.log(tagSlot);
-        
-        // const slot = document.createElement("div");
-        // slot.className = "base_slot" + slotClass;
-        
-        // field.append(slot);
-        
-        // slot.append(tagSlot);
-        
         
         if (!allSlot.includes(tagSlot)) {
 
@@ -78,43 +64,91 @@ function fieldGen(nSlot, slotClass) {
                 bombSlot.push(tagSlot);
 
                 slot = document.createElement("div");
-                slot.className = "base_slot" + slotClass;
 
-        
+                slot.className = "base_slot" + slotClass + tagSlot;
+                
                 field.append(slot);
+                
                 slot.append(tagSlot);
+                
 
                 slot.addEventListener("click",
                     function() {
-
-                        // let reveal = document.querySelector(".bomb");
                         
-                        // reveal.classList.add("bomb_reveal");
+                        // play = 0;
 
                         this.classList.add("bombexplode");
+                        
+                        console.log("Sei morto sulla bomba nr",tagSlot,".Hai totalizzato",score,"punti.");
+
+                            // let oldSlot = field.children;
+                            // console.log(oldSlot);
+                            
+                            // let endList = Array.from(oldSlot);
+                            // console.log(endList);
+                            
+                            // endList.forEach(Element => {
+                            //     classList.remove("bese_slot");
+                            // });
+                        
+                        // this.parentNode.childNodes.removeClass("base_slot");
+                        
+                        // let revealedSlot = document.querySelector(slotClass)
+                        
+                        // revealedSlot = document.removeClass("base_slot");
+                        
+                        
+                        // var elements = field.getElementsByClassName("base_slot");
+                        
+
+                        // while (elements[0]) {
+                        //         elements[0].parentNode.className.(elements[0]);
+                        //     }
+
+                        // debugger;
+
+                            
+                        // }
+
+
                     }
                 )
                 
             }
             else {
+
                 allSlot.push(tagSlot);
+
                 slot = document.createElement("div");
-                slot.className = "base_slot" + slotClass;
+
+                slot.className = "base_slot" + slotClass + tagSlot;
 
                 field.append(slot);
+
                 slot.append(tagSlot);    
 
                 slot.addEventListener("click",
+
                     function() {
-                        this.classList.add("checked");
+                        if (this.classList == "base_slot" + slotClass + tagSlot) {
+                            
+                            this.classList.add("checked");
+
+                            score++;
+
+                            console.log(score);
+
+                        }
+
+                        else {
+                        
+                            console.log(score);
+                        
+                        }
+                        
                     } 
-                ) 
+                    ) 
             }
-
-        }
-
-        else {
-
         }
         
     }
@@ -124,34 +158,9 @@ function fieldGen(nSlot, slotClass) {
 
 }
 
-// for (let i = 0; i < nSlot; i++) {}
-
 // !!aggiunta numeri e bombe!!
 
 // creo i numeri univoci non consequenziali generando anche una lista dei 16 "bomba" 
-
-// function bombGen (nslot) {
-//     const allSlot = [];
-//     const bombSlot [];
-//     while (allSlot.lenght < nslot ) {
-//         let tagSlot = Math.floor(Math.random) * ( nslot + 1 )
-//         if (!allSlot.includes(tagSlot)) && tagSlot <= 16 {
-//             allSlot.push(tagSlot);
-//             bombSlot.push(tagSlot);
-//         }
-//         else if (!allSlot.includes(tagSlot)) && tagSlot > 16 {
-//             allSlot.push(tagSlot);            
-//         }
-        
-        
-//     }
-    
-// }
-
-// function randomSlot(nslot) {
-
-    
-// }
 
 // li stampo per capirci qualcosa
 
@@ -161,15 +170,16 @@ function fieldGen(nSlot, slotClass) {
 
 // Si svelano le bombe e si mostra il punteggio 
 
-
-
-
-
-
+function endgame(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].field.removeChild(elements[0]);
+    }
+}
 
 // una funzione evita la sovrascrittura (in effetti abb inutile)
 
-function clearField() {
+function gameOver() {
     let oldSlot = field.lastElementChild;
     while (oldSlot) {
         field.removeChild(oldSlot);

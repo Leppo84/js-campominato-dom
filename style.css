@@ -39,8 +39,9 @@ header.hidden{
     outline: 18px solid rgb(109, 109, 147);
     outline-style: ridge;
     border-radius: 3px;
-
+    
 }
+
 
 .base_slot {
     /* min-width: 50px; */
@@ -49,6 +50,12 @@ header.hidden{
     border: 1vh dashed black;
     /* border-radius: 12px; */
     margin: 2px;
+}
+
+.bomb {
+    background-color: red;
+    margin: 2px;
+
 }
 
 .base_slot:hover {
@@ -84,18 +91,13 @@ header.hidden{
 .checked {
     background-color: lightblue;
     border: 1.5vh groove;
+    margin: 2px;
+
 }
 
 .checked:hover {
     background-color: rgb(203, 225, 233);
     border: 0.5vh solid blue;
-}
-
-.bomb {
-}
-
-.bomb_reveal {
-    background-color: red;
 }
 
 .bombexplode {
